@@ -1,0 +1,9 @@
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\bin\Debug\Client_for_DB.exe.config
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\bin\Debug\Client_for_DB.exe
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\bin\Debug\Client_for_DB.pdb
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.csprojResolveAssemblyReference.cache
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.ConnectForm.resources
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.Properties.Resources.resources
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.csproj.GenerateResource.Cache
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.exe
+c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.pdb
