@@ -7,3 +7,13 @@ c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\o
 c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.csproj.GenerateResource.Cache
 c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.exe
 c:\users\den\documents\visual studio 2015\Projects\Client_for_DB\Client_for_DB\obj\Debug\Client_for_DB.pdb
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.exe.config
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.exe
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.pdb
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csprojAssemblyReference.cache
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.ConnectForm.resources
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.Properties.Resources.resources
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csproj.GenerateResource.cache
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csproj.CoreCompileInputs.cache
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.exe
+C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.pdb

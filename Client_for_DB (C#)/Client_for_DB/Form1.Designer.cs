@@ -33,8 +33,10 @@
             this.Login_label = new System.Windows.Forms.Label();
             this.Password_label = new System.Windows.Forms.Label();
             this.Password_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Login_textBox = new System.Windows.Forms.TextBox();
             this.button_connect = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // IP_addres_label
@@ -92,14 +94,14 @@
             this.Password_maskedTextBox.TabIndex = 4;
             this.Password_maskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // Login_textBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.textBox1.Location = new System.Drawing.Point(155, 151);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 29);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Login_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Login_textBox.Location = new System.Drawing.Point(155, 151);
+            this.Login_textBox.Name = "Login_textBox";
+            this.Login_textBox.Size = new System.Drawing.Size(166, 29);
+            this.Login_textBox.TabIndex = 5;
+            this.Login_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_connect
             // 
@@ -114,6 +116,14 @@
             this.button_connect.UseVisualStyleBackColor = true;
             this.button_connect.Click += new System.EventHandler(this.button_connect_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(81, 256);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 7;
+            // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,8 +131,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(342, 486);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_connect);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Login_textBox);
             this.Controls.Add(this.Password_maskedTextBox);
             this.Controls.Add(this.Password_label);
             this.Controls.Add(this.Login_label);
@@ -132,6 +143,7 @@
             this.Name = "ConnectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connecting DataBase";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,8 +156,9 @@
         private System.Windows.Forms.Label Login_label;
         private System.Windows.Forms.Label Password_label;
         private System.Windows.Forms.MaskedTextBox Password_maskedTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Login_textBox;
         private System.Windows.Forms.Button button_connect;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
