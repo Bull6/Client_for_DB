@@ -10,13 +10,23 @@
     <height>406</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Connect to DB</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Custom-Icon-Design-Pretty-Office-7-Sql-runner.ico</normaloff>Custom-Icon-Design-Pretty-Office-7-Sql-runner.ico</iconset>
   </property>
   <widget class="QLabel" name="IP_address_label">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>60</x>
      <y>21</y>
      <width>91</width>
      <height>23</height>
@@ -41,7 +51,7 @@
   <widget class="QLineEdit" name="IP_address_textbox">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>240</x>
      <y>20</y>
      <width>181</width>
      <height>29</height>
@@ -52,14 +62,26 @@
      <pointsize>14</pointsize>
     </font>
    </property>
+   <property name="inputMask">
+    <string>000.000.000.000</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>...</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Normal</enum>
+   </property>
+   <property name="cursorPosition">
+    <number>0</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="Login_texbox">
    <property name="geometry">
     <rect>
-     <x>227</x>
+     <x>240</x>
      <y>70</y>
      <width>181</width>
      <height>29</height>
@@ -70,11 +92,14 @@
      <pointsize>14</pointsize>
     </font>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="Login_label">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>60</x>
      <y>70</y>
      <width>45</width>
      <height>23</height>
@@ -92,7 +117,7 @@
   <widget class="QLabel" name="Pass_label">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>60</x>
      <y>120</y>
      <width>78</width>
      <height>23</height>
@@ -110,7 +135,7 @@
   <widget class="QLabel" name="DB_name_label">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>60</x>
      <y>170</y>
      <width>131</width>
      <height>23</height>
@@ -125,10 +150,31 @@
     <string>DataBase name</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="Pass_textbox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>120</y>
+     <width>181</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <widget class="QLineEdit" name="DB_name_textbox">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>240</x>
      <y>170</y>
      <width>181</width>
      <height>29</height>
@@ -139,20 +185,8 @@
      <pointsize>14</pointsize>
     </font>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="Pass_texxtbox">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>120</y>
-     <width>181</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>14</pointsize>
-    </font>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="Connect_button">

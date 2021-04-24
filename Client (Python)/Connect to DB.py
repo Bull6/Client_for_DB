@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 from PyQt5 import QtWidgets, uic
 import sys
 
-from Connect_form import  Ui_Connect_form
+from Connect_Form.Connect_form import  Ui_Connect_form
 
 
 class mywindow(QtWidgets.QMainWindow):
@@ -18,16 +18,17 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
         self.ui = Ui_Connect_form()
         self.ui.setupUi(self)
+        #self.ui.Pass_textbox.setEchoMode(QtWidgets.QLineEdit.Password)
+        #self.ui.IP_address_textbox.setInputMask('000.000.000.000')
         self.ui.Connect_button.clicked.connect(self.Connect_btnClicked)
 
-    # self.ui.IP_address_textbox.text()
     def Connect_btnClicked(self):
         driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
-        db = 'DATABASE=ElectroTransport'
-        user = 'UID=sa'
-        pw = 'PWD=290798Denis'
+        db = 'DATABASE=' + self.ui.DB_name_textbox.text()
+        user = 'UID=' + self.ui.Login_texbox.text()
+        pw = 'PWD=' + self.ui.Pass_textbox.text()
         conn_str = ';'.join([driver, server, port, db, user, pw])
         params = urllib.parse.quote_plus(conn_str)
         engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
