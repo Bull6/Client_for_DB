@@ -7,36 +7,47 @@ from datetime import datetime
 #import mssql
 from sqlalchemy import create_engine
 
-'''class Sql:
-    def __init__(self, database, server="192.168.1.202,1433"):
-        self.cnxn = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
-                                   "Server="+server+";"
-                                   "Database="+database+";"
-                                   "Trusted_Connection=yes;")
-        self.query = "-- {}\n\n-- Made in Python".format(datetime.now()
-                                                         .strftime("%d/%m/%Y"))
-'''
-#SQL= Sql('ElectroTransport')
-#SQL.
-driver = 'DRIVER={SQL Server}'
-server = 'SERVER=192.168.1.202'
-port = 'PORT=1433'
-db = 'DATABASE=ElectroTransport'
-user = 'UID=sa'
-pw = 'PWD=290798Denis'
-conn_str = ';'.join([driver, server, port, db, user, pw])
-params = urllib.parse.quote_plus(conn_str)
-engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-'''
-conn = pyodbc.connect(conn_str)
-cursor = conn.cursor()
+from PyQt5 import QtWidgets, uic
+import sys
 
-print(cursor.execute('select * from Depo'))
-row = cursor.fetchone()
-rest_of_rows = cursor.fetchall()
-print (row)
-print (rest_of_rows)
-'''
-qry = """select * from Depo"""
-df = pd.read_sql(qry, engine)
-print(df.head())
+from Connect_form import  Ui_Connect_form
+
+
+class mywindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(mywindow, self).__init__()
+        self.ui = Ui_Connect_form()
+        self.ui.setupUi(self)
+        self.ui.Connect_button.clicked.connect(self.Connect_btnClicked)
+
+    # self.ui.IP_address_textbox.text()
+    def Connect_btnClicked(self):
+        driver = 'DRIVER={SQL Server}'
+        server = 'SERVER=' + self.ui.IP_address_textbox.text()
+        port = 'PORT=1433'
+        db = 'DATABASE=ElectroTransport'
+        user = 'UID=sa'
+        pw = 'PWD=290798Denis'
+        conn_str = ';'.join([driver, server, port, db, user, pw])
+        params = urllib.parse.quote_plus(conn_str)
+        engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
+        '''
+        conn = pyodbc.connect(conn_str)
+        cursor = conn.cursor()
+
+        print(cursor.execute('select * from Depo'))
+        row = cursor.fetchone()
+        rest_of_rows = cursor.fetchall()
+        print (row)
+        print (rest_of_rows)
+        '''
+        qry = """select * from Depo"""
+        df = pd.read_sql(qry, engine)
+        print(df.head())
+        sys.exit()
+
+
+app = QtWidgets.QApplication([])
+application = mywindow()
+application.show()
+sys.exit(app.exec())
