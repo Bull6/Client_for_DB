@@ -105,3 +105,40 @@ class Ui_Connect_form(object):
         self.Pass_label.setText(_translate("Connect_form", "Password"))
         self.DB_name_label.setText(_translate("Connect_form", "DataBase name"))
         self.Connect_button.setText(_translate("Connect_form", "Connect to DB"))
+'''
+class Connect_Window(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Connect_Window, self).__init__()
+        self.ui = Ui_Connect_form()
+        self.ui.setupUi(self)
+        #self.ui.Pass_textbox.setEchoMode(QtWidgets.QLineEdit.Password)
+        #self.ui.IP_address_textbox.setInputMask('000.000.000.000')
+        self.ui.Connect_button.clicked.connect(self.Connect_btnClicked)
+
+    def Connect_btnClicked(self):
+        driver = 'DRIVER={SQL Server}'
+        server = 'SERVER=' + self.ui.IP_address_textbox.text()
+        port = 'PORT=1433'
+        db = 'DATABASE=' + self.ui.DB_name_textbox.text()
+        user = 'UID=' + self.ui.Login_texbox.text()
+        pw = 'PWD=' + self.ui.Pass_textbox.text()
+        conn_str = ';'.join([driver, server, port, db, user, pw])
+        params = urllib.parse.quote_plus(conn_str)
+        engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
+        
+       
+
+
+
+        qry = """select * from Depo"""
+        df = pd.read_sql(qry, engine)
+        print(df.head())
+
+
+        #Список Таблиц в Combo_Box
+        qry = """select TABLE_NAME from ElectroTransport.INFORMATION_SCHEMA.TABLES"""
+        df = pd.read_sql(qry, engine)
+        for name in list(df.TABLE_NAME):
+            print(name)
+        sys.exit()
+'''
