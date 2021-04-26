@@ -57,15 +57,15 @@ class Connect_Window(QtWidgets.QMainWindow):
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
         db = 'DATABASE=' + 'ElectroTransport'  # self.ui.DB_name_textbox.text()
-        user = 'UID=' + self.ui.Login_texbox.text()
+        user = 'UID=' + Connect_Window.ui.Login_texbox.text()
         pw = 'PWD=' + '290798Denis'  # self.ui.Pass_textbox.text()
         conn_str = ';'.join([driver, server, port, db, user, pw])
         params = urllib.parse.quote_plus(conn_str)
         engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
         return engine
 
-    def take_data(self):
-        qry = """select * from Depo"""
+    def take_data(self, tab_name):
+        qry = """select * from tab_name """
         df = pd.read_sql(qry, self.take_conn())
         return df
 
