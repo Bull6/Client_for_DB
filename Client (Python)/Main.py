@@ -10,6 +10,8 @@ from sqlalchemy import create_engine
 from PyQt5 import QtWidgets, uic
 import sys
 
+from SQL_Query.querys import sql_query
+
 from Connect_Form.Connect_form import  Ui_Connect_form
 
 from Workspace.Workspace import Ui_Workspace
@@ -26,15 +28,7 @@ class Connect_Window(QtWidgets.QMainWindow):
 
 
     def Connect_btnClicked(self):
-        driver = 'DRIVER={SQL Server}'
-        server = 'SERVER=' + '192.168.1.202'#self.ui.IP_address_textbox.text()
-        port = 'PORT=1433'
-        db = 'DATABASE=' + 'ElectroTransport'#self.ui.DB_name_textbox.text()
-        user = 'UID=' + 'sa'#self.ui.Login_texbox.text()
-        pw = 'PWD=' + '290798Denis'#self.ui.Pass_textbox.text()
-        conn_str = ';'.join([driver, server, port, db, user, pw])
-        params = urllib.parse.quote_plus(conn_str)
-        engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
+
         '''
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
@@ -45,24 +39,28 @@ class Connect_Window(QtWidgets.QMainWindow):
         print (rest_of_rows)
         '''
 
-        self.take_data()
+        #self.take_data()
+        df = sql_query.take_conn(self)
+        print(df.head())
         application.hide()
         application1.show()
 
 
+
         # sys.exit()
 
-    def take_conn(self):
+    '''def take_conn(self):
         driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
         db = 'DATABASE=' + 'ElectroTransport'  # self.ui.DB_name_textbox.text()
-        user = 'UID=' + Connect_Window.ui.Login_texbox.text()
+        user = 'UID=' + 'sa'#Ui_Connect_form.ui.Login_texbox.text()
         pw = 'PWD=' + '290798Denis'  # self.ui.Pass_textbox.text()
         conn_str = ';'.join([driver, server, port, db, user, pw])
         params = urllib.parse.quote_plus(conn_str)
         engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-        return engine
+        return engine'''
+
 
     def take_data(self, tab_name):
         qry = """select * from tab_name """
@@ -86,13 +84,17 @@ class Workspace_Window(QtWidgets.QMainWindow):
         self.ui = Ui_Workspace()
         self.ui.setupUi(self)
 
+        self.ui.Tables_comboBox.addItem("Программист")
+        self.ui.Tables_comboBox.addItem("Дизайнер")
+
 
         # Список Таблиц в Combo_Box
-        df = Connect_Window.take_tab_name(self, Connect_Window.take_conn(self))
-        for name in list(df.TABLE_NAME):
-            print(name)
-        self.ui.comboBox.addItem("Программист")
-        self.ui.comboBox.addItem("Дизайнер")
+
+        #df = Connect_Window.take_tab_name(self, Connect_Window.take_conn(self))
+        #for name in list(df.TABLE_NAME):
+        #    print(name)
+
+
 
 
 app = QtWidgets.QApplication([])
