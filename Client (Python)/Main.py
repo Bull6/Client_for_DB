@@ -8,6 +8,7 @@ from datetime import datetime
 from sqlalchemy import create_engine
 
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import *
 import sys
 
 from SQL_Query.querys import sql_query
@@ -48,7 +49,7 @@ class Connect_Window(QtWidgets.QMainWindow):
 
 
         # sys.exit()
-
+'''
     def take_conn(self):
         driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
@@ -71,7 +72,7 @@ class Connect_Window(QtWidgets.QMainWindow):
         qry = """select TABLE_NAME from INFORMATION_SCHEMA.TABLES"""
         df = pd.read_sql(qry, engine)
         return df
-
+'''
 
 
 
@@ -84,20 +85,27 @@ class Workspace_Window(QtWidgets.QMainWindow):
         self.ui = Ui_Workspace()
         self.ui.setupUi(self)
 
-        self.ui.Tables_comboBox.addItem("Программист")
-        self.ui.Tables_comboBox.addItem("Дизайнер")
-
-
         # Список Таблиц в Combo_Box
+        ex = sql_query()
+        df = ex.take_tabs_name()
+        for name in list(df.TABLE_NAME):
+            self.ui.Tables_comboBox.addItem(name)
 
-        ex = Connect_Window()
+        self.ui.Tables_comboBox.currentIndexChanged.connect(self.on_combobox_func)
 
-        df = ex.take_tab_name( ex.take_conn())
-        print (df.head())
-        #for name in list(df.TABLE_NAME):
-        #    print(name)
+        #Вывод выбранной таблицы в  tableWidget
+    def on_combobox_func(self, index):
+        ex = sql_query()
+        df = ex.take_data(self.ui.Tables_comboBox.currentText())
+        headers = df.columns.values.tolist()
+        self.ui.tableWidget.setColumnCount(len(headers))
+        self.ui.tableWidget.setHorizontalHeaderLabels(headers)
+        for i, row in df.iterrows():
+            # Добавление строки
+            self.ui.tableWidget.setRowCount( self.ui.tableWidget.rowCount() + 1)
+            for j in range(self.ui.tableWidget.columnCount()):
 
-
+                self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(row[j])))
 
 
 app = QtWidgets.QApplication([])
