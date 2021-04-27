@@ -40,8 +40,8 @@ class Connect_Window(QtWidgets.QMainWindow):
         '''
 
         #self.take_data()
-        df = sql_query.take_conn(self)
-        print(df.head())
+        #df = sql_query.take_conn(self)
+        #print(df.head())
         application.hide()
         application1.show()
 
@@ -49,7 +49,7 @@ class Connect_Window(QtWidgets.QMainWindow):
 
         # sys.exit()
 
-    '''def take_conn(self):
+    def take_conn(self):
         driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
@@ -59,7 +59,7 @@ class Connect_Window(QtWidgets.QMainWindow):
         conn_str = ';'.join([driver, server, port, db, user, pw])
         params = urllib.parse.quote_plus(conn_str)
         engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-        return engine'''
+        return engine
 
 
     def take_data(self, tab_name):
@@ -90,7 +90,10 @@ class Workspace_Window(QtWidgets.QMainWindow):
 
         # Список Таблиц в Combo_Box
 
-        #df = Connect_Window.take_tab_name(self, Connect_Window.take_conn(self))
+        ex = Connect_Window()
+
+        df = ex.take_tab_name( ex.take_conn())
+        print (df.head())
         #for name in list(df.TABLE_NAME):
         #    print(name)
 

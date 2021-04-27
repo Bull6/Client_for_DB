@@ -10,7 +10,7 @@ from Connect_Form.Connect_form import  Ui_Connect_form
 class sql_query(object):
 
     def take_conn(self):
-        '''
+
         driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
@@ -20,10 +20,10 @@ class sql_query(object):
         conn_str = ';'.join([driver, server, port, db, user, pw])
         params = urllib.parse.quote_plus(conn_str)
         engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-        '''
-        data = pd.read_csv('C:\\Users\\DenT\\Desktop\\DB CSV\\'+ 'Depo'+'.csv')
-        print (data.head())
-        return data
+
+        #data = pd.read_csv('C:\\Users\\DenT\\Desktop\\DB CSV\\'+ 'Depo'+'.csv')
+        #print (data.head())
+        return engine
 
     def take_data(self, tab_name):
         qry = "select * from %s" % (str(tab_name))
