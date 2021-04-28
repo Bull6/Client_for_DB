@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from PyQt5.QtWidgets import *
+
 
 class Ui_Workspace(object):
     def setupUi(self, Workspace):
@@ -39,12 +41,13 @@ class Ui_Workspace(object):
         self.menuFile.setObjectName("menuFile")
         self.menuReports = QtWidgets.QMenu(self.menuFile)
         self.menuReports.setObjectName("menuReports")
-        self.menuAbout = QtWidgets.QMenu(self.menubar)
-        self.menuAbout.setObjectName("menuAbout")
+
         Workspace.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(Workspace)
         self.statusbar.setObjectName("statusbar")
         Workspace.setStatusBar(self.statusbar)
+        self.actionAbout = QtWidgets.QAction(Workspace)
+        self.actionAbout.setObjectName("actionAbout")
         self.actionSave = QtWidgets.QAction(Workspace)
         self.actionSave.setObjectName("actionSave")
         self.actionReport_1 = QtWidgets.QAction(Workspace)
@@ -54,7 +57,9 @@ class Ui_Workspace(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.menuReports.menuAction())
         self.menubar.addAction(self.menuFile.menuAction())
-        self.menubar.addAction(self.menuAbout.menuAction())
+        self.menubar.addAction(self.actionAbout)
+        '''self.aboutAction = QAction('About', self)
+        self.menubar.addAction(self.aboutAction)'''
 
         self.retranslateUi(Workspace)
         QtCore.QMetaObject.connectSlotsByName(Workspace)
@@ -64,6 +69,6 @@ class Ui_Workspace(object):
         Workspace.setWindowTitle(_translate("Workspace", "Workspace"))
         self.menuFile.setTitle(_translate("Workspace", "File"))
         self.menuReports.setTitle(_translate("Workspace", "Reports"))
-        self.menuAbout.setTitle(_translate("Workspace", "About"))
+        self.actionAbout.setText(_translate("Workspace", "About"))
         self.actionSave.setText(_translate("Workspace", "Save"))
         self.actionReport_1.setText(_translate("Workspace", "Report 1"))
