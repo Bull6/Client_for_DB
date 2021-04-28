@@ -92,6 +92,11 @@ class Workspace_Window(QtWidgets.QMainWindow):
             self.ui.Tables_comboBox.addItem(name)
 
         self.ui.Tables_comboBox.currentIndexChanged.connect(self.on_combobox_func)
+        self.ui.menuAbout.triggered.connect(self.click_menuAbout())
+
+    #Вывод текстового сообщещия
+    def click_menuAbout(self):
+        QMessageBox.about(self, "About", "Created by Bull6 28.04.2021")
 
         #Вывод выбранной таблицы в  tableWidget
     def on_combobox_func(self, index):
