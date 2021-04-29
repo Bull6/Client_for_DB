@@ -9,8 +9,9 @@ from sqlalchemy import create_engine
 
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import *
-import sys
 
+import sys
+#импорт файлов программы
 from SQL_Query.querys import sql_query
 from Connect_Form.Connect_form import  Ui_Connect_form
 from Workspace.Workspace import Ui_Workspace
@@ -84,8 +85,10 @@ class Workspace_Window(QtWidgets.QMainWindow):
         self.ui = Ui_Workspace()
         self.ui.setupUi(self)
         self.data_combobox()
+        self.on_combobox_func(0) #вызов функции для заполнения талбицы при появлении формы
         self.ui.actionAbout.triggered.connect(lambda: self.click_actionAbout())
         self.ui.actionReport_1.triggered.connect(lambda: self.click_actionReport())
+        self.ui.actionSave.triggered.connect(lambda: self.click_actionSave())
 
 
     # Список Таблиц в Combo_Box
@@ -105,6 +108,7 @@ class Workspace_Window(QtWidgets.QMainWindow):
         headers = df.columns.values.tolist()
         self.ui.tableWidget.setColumnCount(len(headers))
         self.ui.tableWidget.setHorizontalHeaderLabels(headers)
+
         for i, row in df.iterrows():
             # Добавление строки
             self.ui.tableWidget.setRowCount( self.ui.tableWidget.rowCount() + 1)
@@ -112,6 +116,7 @@ class Workspace_Window(QtWidgets.QMainWindow):
 
                 self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(row[j])))
         self.ui.tableWidget.resizeColumnsToContents()
+
 
     # Вывод текстового сообщещия
     def click_actionAbout(self):
@@ -121,8 +126,48 @@ class Workspace_Window(QtWidgets.QMainWindow):
         #application1.hide()
         application2.show()
 
+    '''def dataframe_generation_from_table(self, table):
+        number_of_rows = table.rowCount()
+        number_of_columns = table.columnCount()
+        header = []
+
+        for i in range(table.columnCount()):
+            header.append(table.horizontalHeaderItem(i))
+            
 
 
+        tmp_df = pd.DataFrame(
+            columns=header,  # Fill columnets
+            index=range(number_of_rows)  # Fill rows
+        )
+
+
+        for i in range(number_of_rows):
+            for j in range(number_of_columns):
+                tmp_df.loc[i, j] = table.item(i, j)
+        print(tmp_df)
+
+    def click_actionSave(self):
+
+        df = self.dataframe_generation_from_table(self.ui.tableWidget)
+
+        driver = 'DRIVER={SQL Server}'
+        server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
+        port = 'PORT=1433'
+        db = 'DATABASE=' + 'ElectroTransport'  # self.ui.DB_name_textbox.text()
+        user = 'UID=' + 'sa'  # ex.ui.Logintextbox()
+        pw = 'PWD=' + '290798Denis'  # self.ui.Pass_textbox.text()
+        conn_str = ';'.join([driver, server, port, db, user, pw])
+        conn = pyodbc.connect(conn_str)
+        cursor = conn.cursor()
+        # Insert Dataframe into SQL Server:
+        wildcards = ','.join(['?'] * len(df.columns))
+        data = [tuple(x) for x in df.values]
+        table_name = self.ui.Tables_comboBox.currentText()
+
+        cursor.executemany("INSERT INTO %s VALUES(%s)" % (table_name, wildcards), data)
+        conn.commit()
+'''
 class Report_Window(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
