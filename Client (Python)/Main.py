@@ -112,6 +112,7 @@ class Workspace_Window(QtWidgets.QMainWindow):
 
         #Вывод выбранной таблицы в  tableWidget
     def on_combobox_func(self, index):
+        self.ui.tableWidget.setRowCount(0)
         ex = sql_query()
         df = ex.take_data(self.ui.Tables_comboBox.currentText())
         headers = df.columns.values.tolist()
@@ -123,6 +124,7 @@ class Workspace_Window(QtWidgets.QMainWindow):
             for j in range(self.ui.tableWidget.columnCount()):
 
                 self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(row[j])))
+        self.ui.tableWidget.resizeColumnsToContents()
 
 
 app = QtWidgets.QApplication([])
