@@ -12,10 +12,9 @@ from PyQt5.QtWidgets import *
 import sys
 
 from SQL_Query.querys import sql_query
-
 from Connect_Form.Connect_form import  Ui_Connect_form
-
 from Workspace.Workspace import Ui_Workspace
+from Report_Form.Report_form import Ui_Report_form
 
 
 class Connect_Window(QtWidgets.QMainWindow):
@@ -84,33 +83,21 @@ class Workspace_Window(QtWidgets.QMainWindow):
         #super(Workspace_Window, self).__init__()
         self.ui = Ui_Workspace()
         self.ui.setupUi(self)
+        self.data_combobox()
+        self.ui.actionAbout.triggered.connect(lambda: self.click_actionAbout())
+        self.ui.actionReport_1.triggered.connect(lambda: self.click_actionReport())
 
-        # Список Таблиц в Combo_Box
+
+    # Список Таблиц в Combo_Box
+    def data_combobox(self):
         ex = sql_query()
         df = ex.take_tabs_name()
         for name in list(df.TABLE_NAME):
             self.ui.Tables_comboBox.addItem(name)
-
         self.ui.Tables_comboBox.currentIndexChanged.connect(self.on_combobox_func)
 
 
-        self.ui.actionAbout.triggered.connect(lambda: self.click_menuAbout())
-
-
-
-        '''
-        self.ui.menuAbout.addAction(self.ui.aboutAction)
-        self.ui.aboutAction.trigger.connect(self.click_menuAbout())'''
-        #self.ui.menuAbout.actionAbout.triggered.connect(self.click_menuAbout())
-        '''action = QAction("Action Text", parent)
-        action.trigger.connect(self.click_menuAbout())
-'''
-    #Вывод текстового сообщещия
-    def click_menuAbout(self):
-        QMessageBox.about(self, "About", "Created by Bull6 28.04.2021")
-
-
-        #Вывод выбранной таблицы в  tableWidget
+    # Вывод выбранной таблицы в  tableWidget
     def on_combobox_func(self, index):
         self.ui.tableWidget.setRowCount(0)
         ex = sql_query()
@@ -126,10 +113,27 @@ class Workspace_Window(QtWidgets.QMainWindow):
                 self.ui.tableWidget.setItem(i, j, QTableWidgetItem(str(row[j])))
         self.ui.tableWidget.resizeColumnsToContents()
 
+    # Вывод текстового сообщещия
+    def click_actionAbout(self):
+        QMessageBox.about(self, "About", "Created by Bull6 28.04.2021")
+
+    def click_actionReport(self):
+        #application1.hide()
+        application2.show()
+
+
+
+class Report_Window(QtWidgets.QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        #super(Workspace_Window, self).__init__()
+        self.ui = Ui_Report_form()
+        self.ui.setupUi(self)
 
 app = QtWidgets.QApplication([])
 application = Connect_Window()
 application1 = Workspace_Window()
+application2 = Report_Window()
 application.show()
 
 
