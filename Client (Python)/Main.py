@@ -126,32 +126,33 @@ class Workspace_Window(QtWidgets.QMainWindow):
         #application1.hide()
         application2.show()
 
-    '''def dataframe_generation_from_table(self, table):
+    def dataframe_generation_from_table(self, table):
         number_of_rows = table.rowCount()
         number_of_columns = table.columnCount()
         header = []
 
         for i in range(table.columnCount()):
-            header.append(table.horizontalHeaderItem(i))
+            header.append(table.horizontalHeaderItem(i).text())
             
 
 
         tmp_df = pd.DataFrame(
-            columns=header,  # Fill columnets
+            columns=(),  # Fill columnets
             index=range(number_of_rows)  # Fill rows
         )
 
 
-        for i in range(number_of_rows):
+        for i in range( number_of_rows):
             for j in range(number_of_columns):
-                tmp_df.loc[i, j] = table.item(i, j)
-        print(tmp_df)
+                tmp_df.loc[i, j] = table.item(i, j).text()
+        tmp_df.columns = header
+        return tmp_df
 
     def click_actionSave(self):
 
-        df = self.dataframe_generation_from_table(self.ui.tableWidget)
+        #df = self.dataframe_generation_from_table(self.ui.tableWidget)
 
-        driver = 'DRIVER={SQL Server}'
+        '''driver = 'DRIVER={SQL Server}'
         server = 'SERVER=' + '192.168.1.202'  # self.ui.IP_address_textbox.text()
         port = 'PORT=1433'
         db = 'DATABASE=' + 'ElectroTransport'  # self.ui.DB_name_textbox.text()
@@ -166,8 +167,16 @@ class Workspace_Window(QtWidgets.QMainWindow):
         table_name = self.ui.Tables_comboBox.currentText()
 
         cursor.executemany("INSERT INTO %s VALUES(%s)" % (table_name, wildcards), data)
-        conn.commit()
-'''
+        conn.commit()'''
+
+        ex = sql_query()
+        engine = ex.take_conn()
+
+        table_name = self.ui.Tables_comboBox.currentText()
+        df = ex.take_data(table_name)
+        df.to_sql(table_name, con=engine, schema='dbo', if_exists='replace')
+
+
 class Report_Window(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
