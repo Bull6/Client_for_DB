@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
 using System.Data.SqlClient;
 using System.Data.Common;
+
 
 namespace Client_for_DB
 {
@@ -28,17 +27,20 @@ namespace Client_for_DB
 
         private void button_connect_Click(object sender, EventArgs e)
         {
-            string strConn = "Data Source="+IP_maskedTextBox.Text+",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID="+Login_textBox.Text+";Password="+Password_maskedTextBox.Text+";";
+            string strConn = "Data Source="+"192.168.1.202"+",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID="+"sa"+";Password="+"290798Denis"+";";
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
             string cmd = "SELECT * FROM Depo"; // Из какой таблицы нужен вывод 
             SqlCommand createCommand = new SqlCommand(cmd, conn);
             createCommand.ExecuteNonQuery();
 
-            SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
-            DataTable dt = new DataTable("Depo"); // В скобках указываем название таблицы
-            dataAdp.Fill(dt);
-            dataGridView1.DataSource = dt.DefaultView; // Сам вывод 
+             
+
+            
+            this.Hide();
+            Form main_win = new Workspace();
+            main_win.Show();
+            
         }
     }
 }

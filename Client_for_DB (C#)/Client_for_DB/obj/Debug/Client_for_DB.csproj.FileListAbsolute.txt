@@ -17,3 +17,14 @@ C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\o
 C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csproj.CoreCompileInputs.cache
 C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.exe
 C:\Users\Den\Source\Repos\Bull6\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.pdb
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.exe.config
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.exe
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\bin\Debug\Client_for_DB.pdb
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csprojAssemblyReference.cache
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.ConnectForm.resources
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.Properties.Resources.resources
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csproj.GenerateResource.cache
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.csproj.CoreCompileInputs.cache
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.exe
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.pdb
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.Workspace.resources

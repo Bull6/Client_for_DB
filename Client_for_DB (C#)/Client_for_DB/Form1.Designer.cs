@@ -35,8 +35,6 @@
             this.Password_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.Login_textBox = new System.Windows.Forms.TextBox();
             this.button_connect = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // IP_addres_label
@@ -116,14 +114,6 @@
             this.button_connect.UseVisualStyleBackColor = true;
             this.button_connect.Click += new System.EventHandler(this.button_connect_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(81, 256);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 7;
-            // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,7 +121,6 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(342, 486);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_connect);
             this.Controls.Add(this.Login_textBox);
             this.Controls.Add(this.Password_maskedTextBox);
@@ -143,7 +132,6 @@
             this.Name = "ConnectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connecting DataBase";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +146,6 @@
         private System.Windows.Forms.MaskedTextBox Password_maskedTextBox;
         private System.Windows.Forms.TextBox Login_textBox;
         private System.Windows.Forms.Button button_connect;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
