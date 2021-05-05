@@ -60,6 +60,7 @@ class Ui_Workspace(object):
         #self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setCascadingSectionResizes(True)
         #self.tableWidget.verticalHeader().setStretchLastSection(True)
+
         self.gridLayout_2.addWidget(self.tableWidget, 2, 0, 1, 1)
         Workspace.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Workspace)
