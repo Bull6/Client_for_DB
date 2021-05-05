@@ -122,12 +122,14 @@ class Workspace_Window(QtWidgets.QMainWindow):
 
         if ret == QMessageBox.Yes:
             print('yes')
+
             ex = sql_query()
             engine = ex.take_conn()
 
             table_name = self.ui.Tables_comboBox.currentText()
             df = ex.take_data(table_name)
-            engine.execute("TRUNCATE  TABLE %s" % (str(table_name)))
+            engine.execute("TRUNCATE  TABLE %s" % (str(table_name))) #хз как реализовать пока что,
+            # из-за связей таблиц не дает перезаписать, через удаление
             with engine.begin() as connection:
                 df.to_sql(table_name, con=connection, schema='dbo', if_exists='append')
 
