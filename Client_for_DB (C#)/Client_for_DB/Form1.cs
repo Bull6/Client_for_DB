@@ -15,6 +15,7 @@ namespace Client_for_DB
 {
     public partial class ConnectForm : Form
     {
+        string ip, login, pas, DB;
         public ConnectForm()
         {
             InitializeComponent();
@@ -24,23 +25,31 @@ namespace Client_for_DB
         {
 
         }
+        public string take_conn()
+        {
+            
+            string strConn = "Data Source=" + ip + ",1433;" +
+                "Network Library=DBMSSOCN;" +
+                "Initial Catalog= " + DB + ";User ID=" + login + ";" +
+                "Password=" + pas + ";";
+            return strConn;
+        }
+        public static string strConn { get; set; }
 
         private void button_connect_Click(object sender, EventArgs e)
         {
-            string strConn = "Data Source="+"192.168.1.202"+",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID="+"sa"+";Password="+"290798Denis"+";";
-            SqlConnection conn = new SqlConnection(strConn);
-            conn.Open();
-            string cmd = "SELECT * FROM Depo"; // Из какой таблицы нужен вывод 
-            SqlCommand createCommand = new SqlCommand(cmd, conn);
-            createCommand.ExecuteNonQuery();
 
-             
-
-            
+            ip = this.IP_textBox.Text;
+            login = this.Login_textBox.Text;
+            pas = this.Pass_textBox.Text;
+            DB = this.DB_Name_textBox.Text;
+ 
             this.Hide();
             Form main_win = new Workspace();
+            
             main_win.Show();
-            //main_win.ShowDialog(this);
+            Form rep_form = new Reports_Win();
+            
             
         }
     }

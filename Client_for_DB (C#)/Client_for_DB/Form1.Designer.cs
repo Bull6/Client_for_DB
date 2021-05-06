@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.IP_addres_label = new System.Windows.Forms.Label();
-            this.IP_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.Login_label = new System.Windows.Forms.Label();
             this.Password_label = new System.Windows.Forms.Label();
-            this.Password_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.Login_textBox = new System.Windows.Forms.TextBox();
+            this.IP_textBox = new System.Windows.Forms.TextBox();
             this.button_connect = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Login_textBox = new System.Windows.Forms.TextBox();
+            this.Pass_textBox = new System.Windows.Forms.TextBox();
+            this.DB_Name_textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // IP_addres_label
@@ -49,16 +51,6 @@
             this.IP_addres_label.Size = new System.Drawing.Size(98, 24);
             this.IP_addres_label.TabIndex = 0;
             this.IP_addres_label.Text = "IP address";
-            // 
-            // IP_maskedTextBox
-            // 
-            this.IP_maskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.IP_maskedTextBox.Location = new System.Drawing.Point(155, 80);
-            this.IP_maskedTextBox.Mask = "990/990/990/990";
-            this.IP_maskedTextBox.Name = "IP_maskedTextBox";
-            this.IP_maskedTextBox.Size = new System.Drawing.Size(166, 29);
-            this.IP_maskedTextBox.TabIndex = 1;
-            this.IP_maskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Login_label
             // 
@@ -81,25 +73,15 @@
             this.Password_label.TabIndex = 3;
             this.Password_label.Text = "Password";
             // 
-            // Password_maskedTextBox
+            // IP_textBox
             // 
-            this.Password_maskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Password_maskedTextBox.Location = new System.Drawing.Point(155, 221);
-            this.Password_maskedTextBox.Name = "Password_maskedTextBox";
-            this.Password_maskedTextBox.PasswordChar = '*';
-            this.Password_maskedTextBox.ShortcutsEnabled = false;
-            this.Password_maskedTextBox.Size = new System.Drawing.Size(166, 29);
-            this.Password_maskedTextBox.TabIndex = 4;
-            this.Password_maskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Login_textBox
-            // 
-            this.Login_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Login_textBox.Location = new System.Drawing.Point(155, 151);
-            this.Login_textBox.Name = "Login_textBox";
-            this.Login_textBox.Size = new System.Drawing.Size(166, 29);
-            this.Login_textBox.TabIndex = 5;
-            this.Login_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.IP_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.IP_textBox.Location = new System.Drawing.Point(157, 75);
+            this.IP_textBox.Name = "IP_textBox";
+            this.IP_textBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IP_textBox.Size = new System.Drawing.Size(166, 29);
+            this.IP_textBox.TabIndex = 5;
+            this.IP_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_connect
             // 
@@ -114,19 +96,59 @@
             this.button_connect.UseVisualStyleBackColor = true;
             this.button_connect.Click += new System.EventHandler(this.button_connect_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(18, 277);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 24);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "DB Name";
+            // 
+            // Login_textBox
+            // 
+            this.Login_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Login_textBox.Location = new System.Drawing.Point(157, 151);
+            this.Login_textBox.Name = "Login_textBox";
+            this.Login_textBox.Size = new System.Drawing.Size(166, 29);
+            this.Login_textBox.TabIndex = 8;
+            this.Login_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Pass_textBox
+            // 
+            this.Pass_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Pass_textBox.Location = new System.Drawing.Point(157, 216);
+            this.Pass_textBox.Name = "Pass_textBox";
+            this.Pass_textBox.PasswordChar = '*';
+            this.Pass_textBox.Size = new System.Drawing.Size(166, 29);
+            this.Pass_textBox.TabIndex = 9;
+            this.Pass_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DB_Name_textBox
+            // 
+            this.DB_Name_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.DB_Name_textBox.Location = new System.Drawing.Point(157, 272);
+            this.DB_Name_textBox.Name = "DB_Name_textBox";
+            this.DB_Name_textBox.Size = new System.Drawing.Size(166, 29);
+            this.DB_Name_textBox.TabIndex = 10;
+            this.DB_Name_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(312, 61);
-            this.Controls.Add(this.button_connect);
+            this.ClientSize = new System.Drawing.Size(335, 365);
+            this.Controls.Add(this.DB_Name_textBox);
+            this.Controls.Add(this.Pass_textBox);
             this.Controls.Add(this.Login_textBox);
-            this.Controls.Add(this.Password_maskedTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button_connect);
+            this.Controls.Add(this.IP_textBox);
             this.Controls.Add(this.Password_label);
             this.Controls.Add(this.Login_label);
-            this.Controls.Add(this.IP_maskedTextBox);
             this.Controls.Add(this.IP_addres_label);
             this.HelpButton = true;
             this.Name = "ConnectForm";
@@ -142,10 +164,12 @@
         private System.Windows.Forms.Label IP_addres_label;
         private System.Windows.Forms.Label Login_label;
         private System.Windows.Forms.Label Password_label;
-        private System.Windows.Forms.MaskedTextBox Password_maskedTextBox;
-        private System.Windows.Forms.TextBox Login_textBox;
         private System.Windows.Forms.Button button_connect;
-        public System.Windows.Forms.MaskedTextBox IP_maskedTextBox;
+        public System.Windows.Forms.TextBox IP_textBox;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox Login_textBox;
+        public System.Windows.Forms.TextBox Pass_textBox;
+        public System.Windows.Forms.TextBox DB_Name_textBox;
     }
 }
 

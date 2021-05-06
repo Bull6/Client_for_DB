@@ -17,20 +17,22 @@ namespace Client_for_DB
 
         SqlCommandBuilder commandBuilder;
         SqlDataAdapter adapter;
-        DataTable dt, da;
+        DataTable dt;
 
-        string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
-
+        //string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
+        //ConnectForm form = new ConnectForm();
+        string strConn = ConnectForm.strConn;
         public Reports_Win()
         {
             InitializeComponent();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             this.take_table_names();
-            //this.take_columns_names();
+            
 
         }
         public void take_table_names()
         {
+            //string strConn = form.take_conn();
             using (SqlConnection conn = new SqlConnection(strConn))
             {
 
@@ -51,6 +53,7 @@ namespace Client_for_DB
         }
         void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //string strConn = form.take_conn();
             using (SqlConnection conn = new SqlConnection(strConn))
             {
 
@@ -117,7 +120,7 @@ namespace Client_for_DB
 
         private void button2_Click(object sender, EventArgs e)
         {
-           // this.datagrid_clear();
+            //string strConn = form.take_conn();
             dataGridView1.Enabled = true;
             dataGridView1.Visible = true;
             string table_name = this.comboBox1.Text;
@@ -134,16 +137,6 @@ namespace Client_for_DB
             dataGridView1.DataSource = dt.DefaultView; // Сам вывод
 
             this.datagrid_resize();
-        }
-
-        public void datagrid_clear()
-        {
-            this.dataGridView1.Rows.Clear();  // удаление всех строк
-            int count = this.dataGridView1.Columns.Count;
-            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-            {
-                this.dataGridView1.Columns.RemoveAt(0);
-            }
         }
 
         public void datagrid_resize()

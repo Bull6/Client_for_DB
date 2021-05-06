@@ -18,21 +18,22 @@ namespace Client_for_DB
         SqlCommandBuilder commandBuilder;
         SqlDataAdapter adapter;
         DataTable dt;
+        string strConn = ConnectForm.strConn;
         
-        string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
-
         public Workspace()
         {
             InitializeComponent();
-            ConnectForm form = (ConnectForm)this.Owner;
-            //string ip_adr = form.IP_maskedTextBox.Text;
+            
+            //string strConn = form.take_conn();
             this.take_table_names();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
 
         public void take_table_names()
         {
-            using (SqlConnection conn = new SqlConnection(strConn))
+            //string strConn = form.take_conn();
+
+            using (SqlConnection conn = new SqlConnection(this.strConn))
             {
                 
                 SqlCommand cmd1 = new SqlCommand("select TABLE_NAME from INFORMATION_SCHEMA.TABLES", conn);
@@ -70,12 +71,14 @@ namespace Client_for_DB
            MessageBoxOptions.DefaultDesktopOnly);
 
             if (result == DialogResult.Yes)
+            {
+                //string strConn = form.take_conn();
                 using (SqlConnection connection = new SqlConnection(strConn))
                 {
                     string table_name = this.comboBox1.Text;
 
                     connection.Open();
-                    
+
                     adapter = new SqlDataAdapter("SELECT * FROM " + table_name, strConn);
                     commandBuilder = new SqlCommandBuilder(adapter);
                     /*
@@ -89,13 +92,14 @@ namespace Client_for_DB
                     */
                     adapter.Update(dt);
                 }
+            }
         
 
             this.TopMost = true;
         }
         void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //this.datagrid_clear();
+            //string strConn = form.take_conn();
             string table_name = this.comboBox1.Text;
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
@@ -109,15 +113,6 @@ namespace Client_for_DB
             dataGridView1.DataSource = dt.DefaultView; // Сам вывод
 
             this.datagrid_resize();
-        }
-        public void datagrid_clear()
-        {
-           // this.dataGridView1.Rows.Clear();  // удаление всех строк
-            int count = this.dataGridView1.Columns.Count;
-            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-            {
-                this.dataGridView1.Columns.RemoveAt(0);
-            }
         }
 
         public void datagrid_resize()
