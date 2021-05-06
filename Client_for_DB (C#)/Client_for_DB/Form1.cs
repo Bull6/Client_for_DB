@@ -43,6 +43,8 @@ namespace Client_for_DB
             login = this.Login_textBox.Text;
             pas = this.Pass_textBox.Text;
             DB = this.DB_Name_textBox.Text;
+            string strConn = this.take_conn();
+            ConnectForm.strConn = strConn;
  
             this.Hide();
             Form main_win = new Workspace();

@@ -26,11 +26,15 @@ namespace Client_for_DB
         {
             InitializeComponent();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            this.take_table_names();
-            
+            comboBox4.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
+            comboBox6.SelectedIndexChanged += comboBox6_SelectedIndexChanged;
+            this.take_table_names1();
+            this.take_table_names2();
+            this.take_table_names3();
+
 
         }
-        public void take_table_names()
+        public void take_table_names1()
         {
             //string strConn = form.take_conn();
             using (SqlConnection conn = new SqlConnection(strConn))
@@ -41,9 +45,46 @@ namespace Client_for_DB
                 adapter = new SqlDataAdapter(cmd1);
                 adapter.Fill(dt);
 
+                
                 this.comboBox1.DataSource = dt;
                 this.comboBox1.DisplayMember = "TABLE_NAME";// столбец для отображения
                 this.comboBox1.SelectedIndex = -1;
+
+            }
+        }
+
+        public void take_table_names2()
+        {
+            //string strConn = form.take_conn();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+
+                SqlCommand cmd1 = new SqlCommand("select TABLE_NAME from INFORMATION_SCHEMA.TABLES", conn);
+                dt = new DataTable();
+                adapter = new SqlDataAdapter(cmd1);
+                adapter.Fill(dt);
+
+                this.comboBox4.DataSource = dt;
+                this.comboBox4.DisplayMember = "TABLE_NAME";// столбец для отображения
+                this.comboBox4.SelectedIndex = -1;
+
+            }
+        }
+
+        public void take_table_names3()
+        {
+            //string strConn = form.take_conn();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+
+                SqlCommand cmd1 = new SqlCommand("select TABLE_NAME from INFORMATION_SCHEMA.TABLES", conn);
+                dt = new DataTable();
+                adapter = new SqlDataAdapter(cmd1);
+                adapter.Fill(dt);
+
+                this.comboBox6.DataSource = dt;
+                this.comboBox6.DisplayMember = "TABLE_NAME";// столбец для отображения
+                this.comboBox6.SelectedIndex = -1;
             }
         }
 
@@ -86,11 +127,45 @@ namespace Client_for_DB
                 this.fill_textbox_select();
                 this.fill_textbox_join();
             }
-            
+            /* хз как исправить
             this.comboBox4.DataSource = tables;
             this.comboBox5.DataSource = columns;
+            */
             
-            
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+
+                SqlCommand cmd2 = new SqlCommand("select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME" +
+                    " = '" + this.comboBox4.Text + "'", conn);
+                dt = new DataTable();
+                adapter = new SqlDataAdapter(cmd2);
+                adapter.Fill(dt);
+
+                this.comboBox5.DataSource = dt;
+                this.comboBox5.DisplayMember = "COLUMN_NAME";// столбец для отображения
+                this.comboBox5.SelectedIndex = -1;
+            }
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+
+                SqlCommand cmd2 = new SqlCommand("select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME" +
+                    " = '" + this.comboBox6.Text + "'", conn);
+                dt = new DataTable();
+                adapter = new SqlDataAdapter(cmd2);
+                adapter.Fill(dt);
+
+                this.comboBox7.DataSource = dt;
+                this.comboBox7.DisplayMember = "COLUMN_NAME";// столбец для отображения
+                this.comboBox7.SelectedIndex = -1;
+            }
         }
         private void fill_textbox_join()
         {
@@ -127,7 +202,8 @@ namespace Client_for_DB
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
             string cmd = "SELECT " +this.textBox1.Text +" FROM " + this.textBox2.Text + " "+ this.comboBox3.Text+ " "
-                +this.textBox3.Text+" ON "+"ETransport.ID_Depo"+" = "+"Depo.ID_Depo"; // Из какой таблицы нужен вывод 
+                +this.textBox3.Text+" ON "+this.comboBox4.Text+" . "+this.comboBox5.Text+" = "+this.comboBox6.Text+
+                " . "+this.comboBox7.Text; // Из какой таблицы нужен вывод 
             SqlCommand createCommand = new SqlCommand(cmd, conn);
             createCommand.ExecuteNonQuery();
 
@@ -183,5 +259,6 @@ namespace Client_for_DB
         {
             Application.Exit();
         }
+
     }
 }
