@@ -9,31 +9,41 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Common;
+using Client_for_DB;
 
 namespace Client_for_DB
 {
     public partial class Workspace : Form
     {
+        SqlCommandBuilder commandBuilder;
+        SqlDataAdapter adapter;
+        DataTable dt;
+        
+        string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
+
         public Workspace()
         {
             InitializeComponent();
+            ConnectForm form = (ConnectForm)this.Owner;
+            //string ip_adr = form.IP_maskedTextBox.Text;
             this.take_table_names();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
 
         public void take_table_names()
         {
-            string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
-            SqlConnection conn = new SqlConnection(strConn);
-            SqlCommand cmd1 = new SqlCommand("select TABLE_NAME from INFORMATION_SCHEMA.TABLES", conn);
-            DataTable tbl1 = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
-            da.Fill(tbl1);
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                
+                SqlCommand cmd1 = new SqlCommand("select TABLE_NAME from INFORMATION_SCHEMA.TABLES", conn);
+                dt = new DataTable();
+                adapter = new SqlDataAdapter(cmd1);
+                adapter.Fill(dt);
 
-            this.comboBox1.DataSource = tbl1;
-            this.comboBox1.DisplayMember = "TABLE_NAME";// столбец для отображения
-            ///this.comboBox1.ValueMember = "...";//столбец с id
-            this.comboBox1.SelectedIndex = -1;
+                this.comboBox1.DataSource = dt;
+                this.comboBox1.DisplayMember = "TABLE_NAME";// столбец для отображения
+                this.comboBox1.SelectedIndex = -1;
+            }
         }
 
         private void actionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,26 +70,54 @@ namespace Client_for_DB
            MessageBoxOptions.DefaultDesktopOnly);
 
             if (result == DialogResult.Yes)
-                this.Text = "";
+                using (SqlConnection connection = new SqlConnection(strConn))
+                {
+                    string table_name = this.comboBox1.Text;
+
+                    connection.Open();
+                    
+                    adapter = new SqlDataAdapter("SELECT * FROM " + table_name, strConn);
+                    commandBuilder = new SqlCommandBuilder(adapter);
+                    /*
+                    adapter.InsertCommand = new SqlCommand("sp_CreateUser", connection);
+                    adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.InsertCommand.Parameters.Add(new SqlParameter("@name", SqlDbType.NVarChar, 50, "Name"));
+                    adapter.InsertCommand.Parameters.Add(new SqlParameter("@age", SqlDbType.Int, 0, "Age"));
+
+                    SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
+                    parameter.Direction = ParameterDirection.Output;
+                    */
+                    adapter.Update(dt);
+                }
+        
 
             this.TopMost = true;
         }
         void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //this.datagrid_clear();
             string table_name = this.comboBox1.Text;
-            string strConn = "Data Source=" + "192.168.1.202" + ",1433;Network Library=DBMSSOCN;Initial Catalog=ElectroTransport;User ID=" + "sa" + ";Password=" + "290798Denis" + ";";
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
             string cmd = "SELECT * FROM " + table_name; // Из какой таблицы нужен вывод 
             SqlCommand createCommand = new SqlCommand(cmd, conn);
             createCommand.ExecuteNonQuery();
 
-            SqlDataAdapter dataAdp = new SqlDataAdapter(createCommand);
-            DataTable dt = new DataTable(table_name); // В скобках указываем название таблицы
-            dataAdp.Fill(dt);
+            adapter = new SqlDataAdapter(createCommand);
+            dt = new DataTable(table_name); // В скобках указываем название таблицы
+            adapter.Fill(dt);
             dataGridView1.DataSource = dt.DefaultView; // Сам вывод
 
             this.datagrid_resize();
+        }
+        public void datagrid_clear()
+        {
+           // this.dataGridView1.Rows.Clear();  // удаление всех строк
+            int count = this.dataGridView1.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.dataGridView1.Columns.RemoveAt(0);
+            }
         }
 
         public void datagrid_resize()
@@ -132,6 +170,14 @@ namespace Client_for_DB
         private void dataGridView1_ColumnRemoved(object sender, DataGridViewColumnEventArgs e)
         {
             this.datagrid_resize();
+        }
+
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form rep_win = new Reports_Win();
+            rep_win.Show();
+            this.Hide();
+
         }
     }
 }

@@ -28,3 +28,4 @@ C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj
 C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.exe
 C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.pdb
 C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.Workspace.resources
+C:\Users\DenT\PycharmProjects\Client_for_DB\Client_for_DB (C#)\Client_for_DB\obj\Debug\Client_for_DB.Reports_Win.resources

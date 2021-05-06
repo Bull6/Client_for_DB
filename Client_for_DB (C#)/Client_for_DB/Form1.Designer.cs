@@ -120,7 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(342, 486);
+            this.ClientSize = new System.Drawing.Size(312, 61);
             this.Controls.Add(this.button_connect);
             this.Controls.Add(this.Login_textBox);
             this.Controls.Add(this.Password_maskedTextBox);
@@ -140,12 +140,12 @@
         #endregion
 
         private System.Windows.Forms.Label IP_addres_label;
-        private System.Windows.Forms.MaskedTextBox IP_maskedTextBox;
         private System.Windows.Forms.Label Login_label;
         private System.Windows.Forms.Label Password_label;
         private System.Windows.Forms.MaskedTextBox Password_maskedTextBox;
         private System.Windows.Forms.TextBox Login_textBox;
         private System.Windows.Forms.Button button_connect;
+        public System.Windows.Forms.MaskedTextBox IP_maskedTextBox;
     }
 }
 

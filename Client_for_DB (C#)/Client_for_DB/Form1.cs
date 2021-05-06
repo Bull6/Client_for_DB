@@ -40,6 +40,7 @@ namespace Client_for_DB
             this.Hide();
             Form main_win = new Workspace();
             main_win.Show();
+            //main_win.ShowDialog(this);
             
         }
     }

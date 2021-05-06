@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports_Win.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports_Win.Designer.cs">
+      <DependentUpon>Reports_Win.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workspace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports_Win.resx">
+      <DependentUpon>Reports_Win.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Workspace.resx">
       <DependentUpon>Workspace.cs</DependentUpon>
     </EmbeddedResource>
