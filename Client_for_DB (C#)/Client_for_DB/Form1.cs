@@ -28,7 +28,7 @@ namespace Client_for_DB
         public string take_conn()
         {
             
-            string strConn = "Data Source=" + ip + ",1433;" +
+            string strConn = "Data Source=" + ip + ";" +
                 //"Network Library=DBMSSOCN;" +
                 "Initial Catalog= " + DB + ";User ID=" + login + ";" +
                 "Password=" + pas + ";";
