@@ -29,7 +29,7 @@ namespace Client_for_DB
         {
             
             string strConn = "Data Source=" + ip + ",1433;" +
-                "Network Library=DBMSSOCN;" +
+                //"Network Library=DBMSSOCN;" +
                 "Initial Catalog= " + DB + ";User ID=" + login + ";" +
                 "Password=" + pas + ";";
             return strConn;
