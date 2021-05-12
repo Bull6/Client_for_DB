@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Common;
 using Client_for_DB;
+using System.Reflection;
 
 namespace Client_for_DB
 {
@@ -90,6 +91,9 @@ namespace Client_for_DB
                     SqlParameter parameter = adapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
                     parameter.Direction = ParameterDirection.Output;
                     */
+                    adapter.InsertCommand = commandBuilder.GetInsertCommand();
+                    adapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                    adapter.DeleteCommand = commandBuilder.GetDeleteCommand();
                     adapter.Update(dt);
                 }
             }
@@ -172,6 +176,87 @@ namespace Client_for_DB
             Form rep_win = new Reports_Win();
             rep_win.Show();
             this.Hide();
+
+        }
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string table_name = this.comboBox1.Text;
+            
+            /*
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            string cmd = "SELECT * FROM " + table_name + "WHERE CONCAT(" + columns + ") LIKE lower('%" + this.textBox1.Text + "%')"; // Из какой таблицы нужен вывод 
+            SqlCommand createCommand = new SqlCommand(cmd, conn);
+            createCommand.ExecuteNonQuery();
+
+            adapter = new SqlDataAdapter(createCommand);
+            dt = new DataTable(table_name); // В скобках указываем название таблицы
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt.DefaultView; // Сам вывод
+            
+            
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter =
+            String.Format(columns+" like '{0}%'", textBox1.Text);
+            */
+            string result;
+            List<string> filterParts = new List<string>();
+            for (int i = 1; i < dataGridView1.Columns.Count; i++)
+            {
+                result = dataGridView1.Columns[i].HeaderText;
+
+                if (textBox1.Text != "")
+                    filterParts.Add(result + " LIKE '%" + textBox1.Text + "%'");
+            }
+
+
+
+            string filter = string.Join(" OR ", filterParts);
+
+            string sql = "SELECT * FROM " + table_name + " WHERE " + filter;
+
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand createCommand = new SqlCommand(sql, conn);
+            createCommand.ExecuteNonQuery();
+
+            adapter = new SqlDataAdapter(createCommand);
+            dt = new DataTable(table_name); // В скобках указываем название таблицы
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt.DefaultView; // Сам вывод
+
+            this.datagrid_resize();
+        }
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
