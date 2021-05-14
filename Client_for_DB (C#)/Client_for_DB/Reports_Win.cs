@@ -25,6 +25,7 @@ namespace Client_for_DB
         public Reports_Win()
         {
             InitializeComponent();
+            this.Activate();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             comboBox4.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
             comboBox6.SelectedIndexChanged += comboBox6_SelectedIndexChanged;
