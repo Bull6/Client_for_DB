@@ -175,7 +175,7 @@ namespace Client_for_DB
         {
             Form rep_win = new Reports_Win();
             rep_win.Show();
-            this.Hide();
+            //this.Hide();
 
         }
         

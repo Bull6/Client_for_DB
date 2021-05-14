@@ -257,7 +257,7 @@ namespace Client_for_DB
 
         private void Reports_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+          //  Application.Exit();
         }
 
     }

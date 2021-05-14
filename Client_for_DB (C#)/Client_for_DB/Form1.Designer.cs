@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectForm));
             this.IP_addres_label = new System.Windows.Forms.Label();
             this.Login_label = new System.Windows.Forms.Label();
             this.Password_label = new System.Windows.Forms.Label();
@@ -140,7 +141,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(335, 365);
+            this.ClientSize = new System.Drawing.Size(335, 382);
             this.Controls.Add(this.DB_Name_textBox);
             this.Controls.Add(this.Pass_textBox);
             this.Controls.Add(this.Login_textBox);
@@ -151,10 +152,11 @@
             this.Controls.Add(this.Login_label);
             this.Controls.Add(this.IP_addres_label);
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ConnectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Connecting DataBase";
+            this.Text = "Connecting to DataBase";
             this.ResumeLayout(false);
             this.PerformLayout();
 
