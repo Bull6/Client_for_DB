@@ -97,6 +97,7 @@ namespace Client_for_DB
             this.newConnectionToolStripMenuItem.Name = "newConnectionToolStripMenuItem";
             this.newConnectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newConnectionToolStripMenuItem.Text = "New Connection";
+            this.newConnectionToolStripMenuItem.Click += new System.EventHandler(this.newConnectionToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -124,9 +125,9 @@ namespace Client_for_DB
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Choose table";
+            this.label1.Text = "Select table";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
@@ -134,9 +135,9 @@ namespace Client_for_DB
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(150, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Enter a filter word";
+            this.label3.Text = "Enter a search";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
@@ -153,7 +154,7 @@ namespace Client_for_DB
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Filtering";
+            this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

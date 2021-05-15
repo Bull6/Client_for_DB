@@ -259,5 +259,12 @@ namespace Client_for_DB
         {
 
         }
+
+        private void newConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form form1 = new ConnectForm();
+            form1.Show();
+        }
     }
 }

@@ -38,10 +38,10 @@ namespace Client_for_DB
         private void button_connect_Click(object sender, EventArgs e)
         {
 
-            ip = "192.168.1.202";//this.IP_textBox.Text;
-            login = "sa";//this.Login_textBox.Text;
-            pas = "290798Denis";// this.Pass_textBox.Text;
-            DB = "ElectroTransport";// this.DB_Name_textBox.Text;
+            ip = this.IP_textBox.Text;
+            login = this.Login_textBox.Text;
+            pas =  this.Pass_textBox.Text;
+            DB =  this.DB_Name_textBox.Text;
             string strConn = this.take_conn();
             ConnectForm.strConn = strConn;
  
