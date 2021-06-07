@@ -1,28 +1,27 @@
 # Client_for_DB
 Welcome to the Client_for_DB wiki!
 
-Приложение - клиент для базы данных. Подключение к базе возможно, как на локальном, так и на удаленном сервере. Таблицы считываются из метаданных на сервере. 
-Присутствует интерфейс, включающий в себя возможность просматривания всех существующих таблиц с данными. Кроме того, на форме присутствуют кнопка поиска, возможность сортировки данных по возрастанию/убыванию,  menubar, включающее сохранение изменений, новое соединение и конструктор отчетов, а также, кнопка информация о программе. Вид стартовой формы приложения представлен на рисунке 1.
- 
-![Connect_form](https://disk.yandex.ru/client/disk/git?idApp=client&dialog=slider&idDialog=%2Fdisk%2Fgit%2Fconnect.png)
+The client application for the database. Connection to the database is possible both on the local and on the remote server. Tables are read from the metadata on the server.
 
-**Рисунок 1** – Внешний вид формы подключения
- 
-![Workspace_form](https://onedrive.live.com/?cid=3B08BD2F98F2DD68&id=3B08BD2F98F2DD68%2125527&parId=3B08BD2F98F2DD68%2125525&o=OneUp)
+There is an interface that includes the ability to view all existing tables with data. In addition, the form has a search button, the ability to sort data in ascending/descending order, a menubar that includes saving changes, a new connection and a report designer, as well as a program information button. The view of the application's start form is shown in Figure 1.
+![connect](https://user-images.githubusercontent.com/8268783/120997427-9eeda000-c7a0-11eb-9687-6a6a15980236.png)
 
-**Рисунок 2** – Внешний вид главной формы
+** Figure 1** - Appearance of the connection form
 
-Ниже показано, как отображается таблица полученная из базы данных.
- 
-![Table_view](https://onedrive.live.com/?cid=3B08BD2F98F2DD68&id=3B08BD2F98F2DD68%2125528&parId=3B08BD2F98F2DD68%2125525&o=OneUp)
+![workspace](https://user-images.githubusercontent.com/8268783/120997554-bdec3200-c7a0-11eb-8904-d1c984e00715.png)
 
-**Рисунок 3** – Внешний вид формы вывода таблицы «Drivers»
- 
-Вид формы отчетов представлен на рисунке 4:
+** Figure 2** - Appearance of the main form
 
-![Reports_form](https://onedrive.live.com/?cid=3B08BD2F98F2DD68&id=3B08BD2F98F2DD68%2125529&parId=3B08BD2F98F2DD68%2125525&o=OneUp) 
+The following shows how the table obtained from the database is displayed.
 
-**Рисунок 4** – Внешний вид формы конструктора отчетов
+![tab](https://user-images.githubusercontent.com/8268783/120997581-c47aa980-c7a0-11eb-89bc-e4289eff0093.png)
 
-В конструкторе отчетов пользователю нужно выбрать таблицу и нужное поле этой таблицы, при необходимости повторить. На данном этапе конструктор может работать максимум с двумя таблицами. Чтобы создать отчет по необходимым данным, пользователю требуется выбрать тип связки в выпадающем меню (строка FROM), а также соответствующие поля для каждой из таблиц (строка ON). Все остальные поля формы заполняются автоматически. При необходимости пользователь может их редактировать
- 
+** Figure 3** - Appearance of the "Drivers" table output form»
+
+The view of the report form is shown in Figure 4:
+
+![report](https://user-images.githubusercontent.com/8268783/120997609-c9d7f400-c7a0-11eb-90f3-bcc35931e249.png)
+
+** Figure 4** - Appearance of the report designer form
+
+In the report designer, the user needs to select a table and the desired field of this table, and repeat it if necessary. At this stage, the constructor can work with a maximum of two tables. To create a report on the required data, the user needs to select the type of bundle in the drop-down menu (FROM row), as well as the corresponding fields for each of the tables (ON row). All other fields of the form are filled in automatically. If necessary, the user can edit them
